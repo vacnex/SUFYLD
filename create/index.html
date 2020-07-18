@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Form</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- #region CSS -->
+    <!-- <link rel="stylesheet" href="../Resource/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../Resource/css/fontawesome.min.5.13.1.css">
+    <link rel="stylesheet" href="../Resource/css/jquery-ui.min.css">
+    <!-- <link rel="stylesheet" href="../Resource/css/mdb.min.css"> -->
+    <link rel="stylesheet" href="../Resource/css/materialize.css">
+    <link rel="stylesheet" href="css/form_builder.css">
+    <link rel="stylesheet" href="css/themes/css/github.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- #endregion -->
+</head>
+
+<body>
+    <div class="">
+        <div class="row">
+            <!-- #region Title -->
+            <div class="col s12">
+                <div class="col s4 offset-s4">
+                    <h1 class="center-align">
+                        Form Builder
+                    </h1>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region Drag area -->
+            <div class="col s6" style="padding: 20px;">
+                <div class="col s12" style="height: 530px;">
+                    <div class="col s4 offset-s4">
+                        <h5 class="center-align">Các thành phần kéo thả</h5>
+                    </div>
+                    <ul id="tabs-swipe" class="tabs tabs-fixed-width">
+                        <li class="itm tab col s3 btn waves-effect waves-light"><a class="active" href="#Title-Tabs">Title</a></li>
+                        <li class="itm tab col s3 "><a href="#Inputs-Tabs">Inputs</a></li>
+                        <li class="itm tab col s3 "><a href="#RadioCheckbox-Tabs">Radio/Checkboxes</a></li>
+                        <li class="itm tab col s3 "><a href="#Select-Tabs">Select</a></li>
+                    </ul>
+                    <div id="Title-Tabs" class="col s12">
+                        <h1 class="ttl">Title h1</h1>
+                        <h2 class="ttl">Title h2</h2>
+                        <h3 class="ttl">Title h3</h3>
+                        <h4 class="ttl">Title h4</h4>
+                        <h5 class="ttl">Title h5</h5>
+                        <h6 class="ttl">Title h6</h6>
+                    </div>
+                    <div id="Inputs-Tabs" class="col s12">
+                        <ul class="">
+                            <li class="input-field">
+                                <input id="exip" type="text" class="validate" disabled>
+                                <label for="exip">Text Input</label>
+                            </li>
+                            <li class="input-field">
+                                <input id="exmail" type="email" class="validate" disabled>
+                                <label for="exmail">Email</label>
+                            </li>
+                            <li class="input-field">
+                                <textarea id="textarea1" class="validate materialize-textarea" disabled></textarea>
+                                <label for="textarea1">Textarea</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="RadioCheckbox-Tabs" class="col s12">
+                        <ul class="">
+                            <li class="">
+                                <p class="cbrd">
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Checkbox Style 1</span>
+                                    </label>
+                                </p>
+                                <p class="cbrd">
+                                    <label>
+                                        <input type="checkbox" class="filled-in" checked="checked" />
+                                        <span>Checkbox Style 2</span>
+                                    </label>
+                                </p>
+                                <p class="cbrd">
+                                    <label>
+                                        <input type="radio" />
+                                        <span>Radio Style 1</span>
+                                    </label>
+                                </p>
+                                <p class="cbrd">
+                                    <label>
+                                        <input class="with-gap" type="radio" />
+                                        <span>Radio Style 2</span>
+                                    </label>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="Select-Tabs" class="col s12">
+                        <ul>
+                            <li class="input-field" style="text-decoration: none;">
+                                <select disabled>
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                                <label>Select</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region Drop preview area -->
+            <div class="col s6 b">
+                <div class="col s12 b">
+                    <div class="col s4 offset-s4">
+                        <h5 class="center-align">xem trước</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region Code viewer -->
+            <div class="col s12">
+                <div class="container">
+                    <h4>Code</h4>
+                    <pre>
+                        <code data-language="html">
+                            
+                        </code>
+                    </pre>
+                </div>
+            </div>
+            <!-- #endregion -->
+        </div>
+    </div>
+
+
+
+    <!-- #region JS -->
+    <script src="../Resource/js/jquery.min.js"></script>
+    <script src="../Resource/js/jquery-ui.min.js"></script>
+    <script src="../Resource/js/popper.min.js"></script>
+    <!-- <script src="../Resource/js/bootstrap.min.js"></script> -->
+    <!-- <script src="../Resource/js/mdb.min.js"></script> -->
+    <script src="../Resource/js/materialize.js"></script>
+    <script src="../Resource/js/fontawesome.min.5.13.1.js"></script>
+    <script src="js/form_builder.js"></script>
+    <script src="js/rainbow.js"></script>
+    <script src="js/language/html.js"></script>
+    <script src="js/script.js"></script>
+    <!-- #endregion -->
+</body>
+
+</html>
