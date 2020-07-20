@@ -2,31 +2,47 @@
     margin: 0;
     padding: 0;
 }
+
+a { color: inherit; } 
+
 .b{
     border: 1px solid green;
 }
-.tabs .tab{
-    margin: 0px 20px;
+.text-uppercase{
+    text-transform: uppercase;
 }
-.tabs .tab a{
-    color: #666;
+.btnmargin{
+    margin-top: 0px;
+    margin-right: 30px;
 }
-.tabs .tab a:hover {
-    color: #666;
+.btnmargin:hover {
+    background-color: rgba(158,158,158,0.3);
 }
-.tabs .tab a.active{
-    color: white;
+#ipfieldTemp,#ipemailTemp,#txtareaTemp,.chkrdoItem,.slctitem{
+    margin-bottom: 30px;
 }
-.tabs .indicator {
-    background-color: transparent ;
+.dynamic-color .red, .dynamic-color .pink, .dynamic-color .purple, .dynamic-color .deep-purple, .dynamic-color .indigo, .dynamic-color .blue, .dynamic-color .light-blue, .dynamic-color .cyan, .dynamic-color .teal, .dynamic-color .green, .dynamic-color .light-green, .dynamic-color .lime, .dynamic-color .yellow, .dynamic-color .amber, .dynamic-color .orange, .dynamic-color .deep-orange, .dynamic-color .brown, .dynamic-color .grey, .dynamic-color .blue-grey, .dynamic-color .black, .dynamic-color .white, .dynamic-color .transparent {
+    height: 55px;
+    width: 100%;
+    padding: 0 15px;
+    font-weight: 500;
+    font-size: 12px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
-.btn{
-    background-color: #4285f4 ;
-}
-.btn:hover{
-    background-color: #4285f4 ;
-    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
-}
-.sa:hover{
-background-color: rgba(158,158,158,0.3);
+.h {
+    display: none;
 }
