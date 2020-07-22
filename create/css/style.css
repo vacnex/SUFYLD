@@ -46,3 +46,7 @@ a { color: inherit; }
 .h {
     display: none;
 }
+.color-select:hover{
+    cursor: pointer;
+    border: 1px solid blue;
+}

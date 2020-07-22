@@ -111,7 +111,7 @@
                 <form class="col s12 z-depth-2" style="padding: 30px; margin: 0px 0px 30px 0px; border-radius: 10px;">
                     <div class="row">
                         <div data-target="titlemodal" class=" modal-trigger center-align formtitle">
-                            <a href=""><h5>Tiêu đề</h5></a>
+                            <a href=""><h5 id="title">Tiêu đề</h5></a>
                         </div>
                     </div>
                     <ul class="previewform" style="height: auto;">
@@ -153,8 +153,8 @@
                         <label for="titlelabelmodal">Nhập tiêu đề</label>
                     </div>
                     <div class="input-field">
-                        <select>
-                            <option value="" disabled selected>Chọn</option>
+                        <select id="titlesize">
+                            <option value="0" disabled selected>Chọn</option>
                             <option value="1">h1</option>
                             <option value="2">h2</option>
                             <option value="3">h3</option>
@@ -164,8 +164,8 @@
                         <label>Chọn kích cỡ</label>
                     </div>
                     <div class="input-field">
-                        <select>
-                            <option value="" disabled selected>Chọn</option>
+                        <select id="titlealign">
+                            <option value="0" disabled selected>Chọn</option>
                             <option value="1">Trái</option>
                             <option value="2">Giữa</option>
                             <option value="3">Phải</option>
@@ -520,7 +520,7 @@
                                 <div class="blue-grey darken-4" style="color: rgba(255, 255, 255, 0.9);"><span>#263238 blue-grey
                                         darken-4</span></div>
                             </div>
-                            <div class="col s12 m6 l4">
+                            <div class="bwt col s12 m6 l4">
                                 <div class="black" style="color: rgba(255, 255, 255, 0.9);"><span>#000000 black</span></div>
                                 <div class="white"><span>#ffffff white</span></div>
                                 <div class="transparent"><span>N/A transparent</span></div>

@@ -1,10 +1,36 @@
 $(document).ready(function(){
 /* #region  Init */
+    var titleheader
     $('#tabs-swipe').tabs({ swipeable: false });
     $('select').formSelect();
     $('.modal').modal({onOpenStart: function(){
         $('#iplabelmodal').val(val);
         $( "#chkrequire" ).prop( "checked", chkstatus );
+        $('#titlelabelmodal').val($('.formtitle>a>h5').text());
+        if ($('.formtitle').hasClass('center-align')) {
+            $('#titlealign').val(2);
+        } else if($('.formtitle').hasClass('left-align')){
+            $('#titlealign').val(1);
+        }
+        else if($('.formtitle').hasClass('right-align')){
+            $('#titlealign').val(3);
+        }else{
+            $('#titlealign').val(0);
+        }
+        titleheader = $( "#title")[0].tagName.toLowerCase()
+        if (titleheader == 'h1') {
+            $('#titlesize').val(1);
+        }else if (titleheader == 'h2') {
+            $('#titlesize').val(2);
+        }else if (titleheader == 'h3') {
+            $('#titlesize').val(3);
+        }else if (titleheader == 'h4') {
+            $('#titlesize').val(4);
+        }else if (titleheader == 'h5') {
+            $('#titlesize').val(5);
+        }else{
+            $('#titlesize').val(0);
+        }
     }});
     $('.select-dropdown').css('cursor', 'pointer');
     $('input.autocomplete').autocomplete({
@@ -67,6 +93,9 @@ $(document).ready(function(){
             }if (val == 'lime') {
                 $('#lime').show();
                 $("#pink,#purple,#deep-purple,#indigo,#blue,#light-blue,#cyan,#teal,#green,#light-green,#red,#yellow,#amber,#orange,#deep-orange,#brown,#grey,#blue-grey").hide();
+            }if (val == 'yellow') {
+                $('#yellow').show();
+                $("#pink,#purple,#deep-purple,#indigo,#blue,#light-blue,#cyan,#teal,#green,#light-green,#red,#lime,#amber,#orange,#deep-orange,#brown,#grey,#blue-grey").hide();
             }if (val == 'amber') {
                 $('#amber').show();
                 $("#pink,#purple,#deep-purple,#indigo,#blue,#light-blue,#cyan,#teal,#green,#light-green,#lime,#red,#red,#orange,#deep-orange,#brown,#grey,#blue-grey").hide();
@@ -189,10 +218,22 @@ $('#autocomplete-input').on('keyup',function (e) {
         
     });
  /* #endregion */
+    var cls,titlesie,titlealign,titlelabelmodal
+    $('#red>div, #pink>div, #purple>div, #deep-purple>div, #indigo>div, #blue>div, #light-blue>div, #cyan>div, #teal>div, #green>div, #light-green>div, #lime>div, #yellow>div, #amber>div, #orange>div, #deep-orange>div, #brown>div, #grey>div, #blue-grey>div, #bwt>div').each(function (i, el) {
+        $(el).addClass('color-select');
+    });
+    $('#red>div, #pink>div, #purple>div, #deep-purple>div, #indigo>div, #blue>div, #light-blue>div, #cyan>div, #teal>div, #green>div, #light-green>div, #lime>div, #yellow>div, #amber>div, #orange>div, #deep-orange>div, #brown>div, #grey>div, #blue-grey>div, #bwt>div').on('click', function () {
+        cls = $(this).prop('class').replace('color-select','')
+        $('#autocomplete-input').val(cls);
+    });
+    $('#titlesize, #titlealign').change(function(){
+        titlesie= $('#titlesize').val();
+        titlealign = $('#titlealign').val();       
+    });
+    $('#titlemodalupdate').on('click', function () {
+        titlelabelmodal = $('#titlelabelmodal').val();
+        $('.formtitle').html('');
+        console.log(cls,titlesie,titlealign,titlelabelmodal)
 
-// $('#colormodal').on('keyup',function () { 
-//     var value = $(this).val().toLowerCase();
-//     console.log($('.dynamic-color').find('div[id^='+value+']'))
-// });
-
+    });
 });
