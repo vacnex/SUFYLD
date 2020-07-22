@@ -6,7 +6,7 @@ $(document).ready(function(){
     $('.modal').modal({onOpenStart: function(){
         $('#iplabelmodal').val(val);
         $( "#chkrequire" ).prop( "checked", chkstatus );
-        $('#titlelabelmodal').val($('.formtitle>a>h5').text());
+        $('#titlelabelmodal').val($('#title').text());
         if ($('.formtitle').hasClass('center-align')) {
             $('#titlealign').val(2);
         } else if($('.formtitle').hasClass('left-align')){
@@ -218,22 +218,70 @@ $('#autocomplete-input').on('keyup',function (e) {
         
     });
  /* #endregion */
-    var cls,titlesie,titlealign,titlelabelmodal
-    $('#red>div, #pink>div, #purple>div, #deep-purple>div, #indigo>div, #blue>div, #light-blue>div, #cyan>div, #teal>div, #green>div, #light-green>div, #lime>div, #yellow>div, #amber>div, #orange>div, #deep-orange>div, #brown>div, #grey>div, #blue-grey>div, #bwt>div').each(function (i, el) {
+    var cls,titlesize,titlealign,titlelabelmodal
+    $('#red>div, #pink>div, #purple>div, #deep-purple>div, #indigo>div, #blue>div, #light-blue>div, #cyan>div, #teal>div, #green>div, #light-green>div, #lime>div, #yellow>div, #amber>div, #orange>div, #deep-orange>div, #brown>div, #grey>div, #blue-grey>div, .bwt>div').each(function (i, el) {
         $(el).addClass('color-select');
     });
-    $('#red>div, #pink>div, #purple>div, #deep-purple>div, #indigo>div, #blue>div, #light-blue>div, #cyan>div, #teal>div, #green>div, #light-green>div, #lime>div, #yellow>div, #amber>div, #orange>div, #deep-orange>div, #brown>div, #grey>div, #blue-grey>div, #bwt>div').on('click', function () {
+    $('#red>div, #pink>div, #purple>div, #deep-purple>div, #indigo>div, #blue>div, #light-blue>div, #cyan>div, #teal>div, #green>div, #light-green>div, #lime>div, #yellow>div, #amber>div, #orange>div, #deep-orange>div, #brown>div, #grey>div, #blue-grey>div, .bwt>div').on('click', function () {
         cls = $(this).prop('class').replace('color-select','')
         $('#autocomplete-input').val(cls);
     });
     $('#titlesize, #titlealign').change(function(){
-        titlesie= $('#titlesize').val();
+        titlesize= $('#titlesize').val();
         titlealign = $('#titlealign').val();       
     });
     $('#titlemodalupdate').on('click', function () {
+        $('#title').removeClass();
         titlelabelmodal = $('#titlelabelmodal').val();
-        $('.formtitle').html('');
-        console.log(cls,titlesie,titlealign,titlelabelmodal)
+        if (cls == null) {
+            var tempcls = $('#autocomplete-input').val()
+            var spl = tempcls.trim().split(/(\s+)/);
+            var newspl = spl.filter(function(v){return v!==' '});
+            var textcolor = newspl[0]+'-text '
+            var textlighten = 'text-'+newspl[1]
+            var newcls = textcolor+textlighten
+        }
+        else{
+            var spl = cls.trim().split(/(\s+)/);
+            var newspl = spl.filter(function(v){return v!==' '});
+            var textcolor = newspl[0]+'-text '
+            var textlighten = 'text-'+newspl[1]
+            var newcls = textcolor+textlighten
+        }
+        if (!newspl[0] || !newspl[1]) {
+            $('#title').removeClass();
+        }else{
+            $('#title').addClass(newcls);
+        }
+        if(newspl[0]=='black'){
+            $('#title').removeClass();
+        }if(newspl[0]=='white'){
+            alert('test')
+            $('#title').addClass('white-text');
+        }
+        $('#title').text(titlelabelmodal);
+        if (titlealign == 1) {
+            $('.formtitle').removeClass('center-align right-align').addClass('left-align');
+        }else if (titlealign == 2) {
+            $('.formtitle').removeClass('left-align right-align').addClass('center-align');
+        }else if (titlealign == 3) {
+            $('.formtitle').removeClass('center-align left-align').addClass('right-align');
+        }
+        var currenttitle = $('#title').text();
+        
+        var currentclass = $('#title').prop('class')
+        console.log(currenttitle,currentclass)
+        if (titlesize == 1) {
+            $('#newsize').html('<h1 id="title" class="'+currentclass+'" >'+currenttitle+'</h1>');
+        }else if (titlesize == 2) {
+            $('#newsize').html('<h2 id="title" class="'+currentclass+'" >'+currenttitle+'</h2>');
+        }else if (titlesize == 3) {
+            $('#newsize').html('<h3 id="title" class="'+currentclass+'" >'+currenttitle+'</h3>');
+        }else if (titlesize == 4) {
+            $('#newsize').html('<h4 id="title" class="'+currentclass+'" >'+currenttitle+'</h4>');
+        }else if (titlesize == 5) {
+            $('#newsize').html('<h5 id="title" class="'+currentclass+'" >'+currenttitle+'</h5>');
+        }
 
     });
 });
