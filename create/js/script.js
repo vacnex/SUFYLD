@@ -248,10 +248,13 @@ $('#autocomplete-input').on('keyup',function (e) {
             var textlighten = 'text-'+newspl[1]
             var newcls = textcolor+textlighten
         }
+        
         if (!newspl[0] || !newspl[1]) {
             $('#title').removeClass();
         }else{
             $('#title').addClass(newcls);
+        }if(newspl.length == 1){
+            $('#title').addClass(newspl[0]+'-text ');
         }
         if(newspl[0]=='black'){
             $('#title').removeClass();
