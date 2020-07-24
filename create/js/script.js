@@ -35,7 +35,8 @@ $(document).ready(function(){
         $('#chkrdolabelmodal').val(val);
         $( "#chkdefault" ).prop( "checked", chkstatus );
     }});
-    $('.select-dropdown').css('cursor', 'pointer');
+    $('.select-dropdown').css('cursor', 'pointer')
+    $('#slct>div>div').addClass('slctitem');
     $('input.autocomplete').autocomplete({
         data: {
             "red": null,
@@ -324,5 +325,13 @@ $('#titlemodalupdate').on('click', function () {
         $('.previewform').append('<li id="ip'+number+'" class="chkrdocurrent modal-trigger" href="#chkrdomodal"><label><input name="group1" class="with-gap" id="rdo'+number+'" type="radio" disabled /><span>Radio style 2</span></label></li>');
     });
  /* #endregion */
+    $('#slct').on('click', function () {
+        //alert('test')
+        number = $('.previewform li').length + 1
+        $('.previewform').append('<li class="input-field"><select ><option value="" disabled selected>Choose your option</option><option value="1">Option 1</option><option value="2">Option 2</option><option value="3">Option 3</option></select><label>Select label</label></li>').ready(function () {
+            $('select').formSelect();
+            $('.select-dropdown').css('cursor', 'pointer')
 
+        });
+    });
 });
