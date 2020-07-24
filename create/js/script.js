@@ -1,6 +1,6 @@
 $(document).ready(function(){
 /* #region  Init */
-    var titleheader
+    var titleheader,number
     $('#tabs-swipe').tabs({ swipeable: false });
     $('select').formSelect();
     $('.modal').modal({onOpenStart: function(){
@@ -32,6 +32,8 @@ $(document).ready(function(){
             $('#titlesize').val(0);
         }
         $('#submitlabelmodal').val($('#btnconfig').text());
+        $('#chkrdolabelmodal').val(val);
+        $( "#chkdefault" ).prop( "checked", chkstatus );
     }});
     $('.select-dropdown').css('cursor', 'pointer');
     $('input.autocomplete').autocomplete({
@@ -120,6 +122,7 @@ $(document).ready(function(){
                 $("#pink,#purple,#deep-purple,#indigo,#blue,#light-blue,#cyan,#teal,#green,#light-green,#lime,#yellow,#amber,#orange,#deep-orange,#brown,#grey,#red").hide();
             }
         },
+    
     });
 /* #endregion */
 
@@ -232,7 +235,6 @@ $('#titlemodalupdate').on('click', function () {
     var currentid = '#'
     var iptextchild = '#'
     var labeltextchild = '#'
-    var type = ''
     var val = ''
     var chkstatus
     $('.previewform').on('click','.current', function () {
@@ -266,11 +268,31 @@ $('#titlemodalupdate').on('click', function () {
     $('#textmodaldelete').on('click', function () {
         $(currentid).remove();
     });
+/* #endregion */
 
+/* #region  checkbox - radio modal */
+    $('.previewform').on('click','.chkrdocurrent', function () {
+        currentid = '#'
+        currentid += $(this).attr('id');
+        val = $(this).children("label").children("span").text()
+        chkstatus = $(this).children("label").children("input").prop('checked')
+    });
+    $('#chkrdomodalupdate').on('click', function () {
+        var chkrdolabelmodal = $('#chkrdolabelmodal').val();
+        var chked = $('#chkdefault').prop('checked')
+        $(currentid).children("label").children("span").text(chkrdolabelmodal);
+        if (chked == true) {
+            $(currentid).children("label").children("input").prop('checked',true)
+        }else{
+            $(currentid).removeAttr('checked');
+        }
+    });
+    $('#chkrdomodaldelete').on('click', function () {
+        $(currentid).remove();
+    });
 /* #endregion */
 
 /* #region  inputfiled  */
-    var number
     $('#ipfieldTemp').on('click', function () {
         number = $('.previewform li').length + 1
         $('.previewform').append('<li id="ip'+number+'" class="current input-field modal-trigger" href="#textmodal"><input id="defalttext'+number+'" type="text" class="validate"><label id="defalttextlabel'+number+'" for="defalttext'+number+'">Default label</label></li>');
@@ -281,21 +303,25 @@ $('#titlemodalupdate').on('click', function () {
     });
     $('#txtareaTemp').on('click', function () {
         number = $('.previewform li').length + 1
-        $('.previewform').append('<div id="ip'+number+'" class="current input-field modal-trigger" href="#textmodal"><textarea id="txtarea'+number+'" type="email" class="validate materialize-textarea"></textarea><label id="txtareadefaultlabel'+number+'" for="txtarea'+number+'">Default text area label</label></div>');
+        $('.previewform').append('<li id="ip'+number+'" class="current input-field modal-trigger" href="#textmodal"><textarea id="txtarea'+number+'" type="email" class="validate materialize-textarea"></textarea><label id="txtareadefaultlabel'+number+'" for="txtarea'+number+'">Default text area label</label></li>');
     });
 /* #endregion */
 /* #region  checkbox - radio */
     $('#chkstyle1').on('click', function () {
-        
+        number = $('.previewform li').length + 1
+        $('.previewform').append('<li id="ip'+number+'" class="chkrdocurrent modal-trigger" href="#chkrdomodal"><label><input name="group1" id="chk'+number+'" type="checkbox" disabled /><span>Checkbox style 1</span></label></li>');
     });
     $('#chkstyle2').on('click', function () {
-        
+        number = $('.previewform li').length + 1
+        $('.previewform').append('<li id="ip'+number+'" class="chkrdocurrent modal-trigger" href="#chkrdomodal"><label><input name="group1" class="filled-in" id="chk'+number+'" type="checkbox" disabled /><span>Checkbox style 2</span></label></li>');
     });
     $('#rdostyle1').on('click', function () {
-        
+        number = $('.previewform li').length + 1
+        $('.previewform').append('<li id="ip'+number+'" class="chkrdocurrent modal-trigger" href="#chkrdomodal"><label><input name="group1" id="rdo'+number+'" type="radio" disabled /><span>Radio style 1</span></label></li>');
     });
     $('#rdostyle2').on('click', function () {
-        
+        number = $('.previewform li').length + 1
+        $('.previewform').append('<li id="ip'+number+'" class="chkrdocurrent modal-trigger" href="#chkrdomodal"><label><input name="group1" class="with-gap" id="rdo'+number+'" type="radio" disabled /><span>Radio style 2</span></label></li>');
     });
  /* #endregion */
 
