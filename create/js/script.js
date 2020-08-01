@@ -35,10 +35,13 @@ $(document).ready(function(){
         $('#chkrdolabelmodal').val(val);
         $("#chkdefault").prop( "checked", chkstatus );
         $('#number_inline').val(oplist.length);
+        $('#optioncontent').empty()
         for (i=0;i<oplist.length;i++){
             $('#optioncontent').append('<div class="input-field"><input id="op'+(i+1)+'" type="text" class="validate"></div><br>');
             $('#op'+(i+1)).val(oplist[i]);
         }
+        $('#slclabel').val(defaultlabeloptions);
+        $('#slclabelmodal').val(currentlabel);
     }});
     $('.select-dropdown').css('cursor', 'pointer')
     $('#slct>div>div').addClass('slctitem');
@@ -308,6 +311,7 @@ $('#titlemodalupdate').on('click', function () {
         currentid += $(this).attr('id');
         labeltextchild += $(this).children("label").attr('id')
         linum = $(currentid).children('div').children('ul').children('li').length
+        currentlabel = $(currentid).children('label').text()
         $(currentid).children('div').children('ul').children('li').each(function (index, element) {
             if ($( this ).prop('class').startsWith('disabled')) {
                 defaultlabeloptions = $( this ).text()
@@ -316,7 +320,6 @@ $('#titlemodalupdate').on('click', function () {
                 oplist.push($( this ).text())
             }
         });
-        console.log(oplist.length)
     });
     $('#number_inline').on('keyup change', function () {
         var number = $(this).val();
@@ -329,10 +332,18 @@ $('#titlemodalupdate').on('click', function () {
                 $('#op'+(i+1)).val('Option '+(i+1));
             }
     });
-
+    $('#slcmodalupdate').on('click', function () {
+        var slclabelmodal = $('#slclabelmodal').val();
+        var slclabel = $('#slclabel').val();
+        $(currentid).children('label').text(slclabelmodal)
+        $(currentid).find('input').val(slclabel)
+        $(currentid).find('.disabled').text(slclabel)
+        $(currentid).find('select > option').first().text(slclabel)
+    });
     $('#slcmodaldelete').on('click', function () {
         $(currentid).remove();
     });
+
 /* #endregion */
 
 /* #region  inputfiled  */
