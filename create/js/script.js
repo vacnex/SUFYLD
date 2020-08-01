@@ -312,6 +312,9 @@ $('#titlemodalupdate').on('click', function () {
                 $(container).append('<div class="input-field"><input id="op'+(i+1)+'" type="text" class="validate"><label for="op'+(i+1)+'">Option '+(i+1)+'</label></div><br>');
             }
     });
+    $('#slcmodaldelete').on('click', function () {
+        $(currentid).remove();
+    });
 /* #endregion */
 
 /* #region  inputfiled  */
