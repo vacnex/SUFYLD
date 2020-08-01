@@ -41,7 +41,6 @@ $(document).ready(function(){
         $('#chkrdolabelmodal').val(val);
         $("#chkdefault").prop( "checked", chkstatus );
         $('#number_inline').val(oplist.length);
-        $('#optioncontent').empty()
         for (i=0;i<oplist.length;i++){
             $('#optioncontent').append('<div class="input-field"><input id="op'+(i+1)+'" type="text" class="validate"></div><br>');
             $('#op'+(i+1)).val(oplist[i]);
@@ -379,6 +378,7 @@ $('#titlemodalupdate').on('click', function () {
     });
  /* #endregion */
 /* #region  select */
+    $('#optioncontent').empty()
     $('#slct').on('click', function () {
         number = $('.previewform').children('li').length + 1
         $('.previewform').append('<li id="ip'+number+'" class="selectcurent input-field modal-trigger" href="#slcmodal"><select><option value="" disabled selected>Choose your option</option><option value="1">Option 1</option><option value="2">Option 2</option><option value="3">Option 3</option></select><label id="slct'+number+'">Select label</label></li>').ready(function () {
