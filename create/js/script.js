@@ -1,6 +1,12 @@
 $(document).ready(function(){
 /* #region  Init */
-    var titleheader,number
+    var titleheader,number,defaultlabeloptions,currentlabel,type
+    var oplist = [];
+    var currentid = '#'
+    var iptextchild = '#'
+    var labeltextchild = '#'
+    var val = ''
+    var chkstatus
     $('#tabs-swipe').tabs({ swipeable: false });
     $('select').formSelect();
     $('.modal').modal({onOpenStart: function(){
@@ -241,11 +247,6 @@ $('#titlemodalupdate').on('click', function () {
 /* #endregion */
 
 /* #region input text Modal */
-    var currentid = '#'
-    var iptextchild = '#'
-    var labeltextchild = '#'
-    var val = ''
-    var chkstatus
     $('.previewform').on('click','.current', function () {
         currentid = '#'
         iptextchild = '#'
@@ -303,7 +304,6 @@ $('#titlemodalupdate').on('click', function () {
 
 /* #region  select modal */
     $('.previewform').on('click','.selectcurent', function () {
-        oplist = [];
         currentid = '#'
         labeltextchild = '#'
         linum = 0
