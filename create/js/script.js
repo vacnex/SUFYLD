@@ -293,45 +293,55 @@ $('#titlemodalupdate').on('click', function () {
     });
 /* #endregion */
 
+/* #region  select modal */
+    $('.previewform').on('click','.chkrdocurrent', function () {
+        currentid = '#'
+        currentid += $(this).attr('id');
+        val = $(this).children("label").children("span").text()
+        chkstatus = $(this).children("label").children("input").prop('checked')
+    });
+/* #endregion */
+
 /* #region  inputfiled  */
     $('#ipfieldTemp').on('click', function () {
-        number = $('.previewform li').length + 1
+        number = $('.previewform').children('li').length + 1
         $('.previewform').append('<li id="ip'+number+'" class="current input-field modal-trigger" href="#textmodal"><input id="defalttext'+number+'" type="text" class="validate"><label id="defalttextlabel'+number+'" for="defalttext'+number+'">Default label</label></li>');
     });
     $('#ipemailTemp').on('click', function () {
-        number = $('.previewform li').length + 1
+        number = $('.previewform').children('li').length + 1
         $('.previewform').append('<li id="ip'+number+'" class="current input-field modal-trigger" href="#textmodal"><input id="defaltemail'+number+'" type="email" class="validate"><label id="defaltemaillabel'+number+'" for="defaltemail'+number+'">Default email label</label></li>');
     });
     $('#txtareaTemp').on('click', function () {
-        number = $('.previewform li').length + 1
+        number = $('.previewform').children('li').length + 1
         $('.previewform').append('<li id="ip'+number+'" class="current input-field modal-trigger" href="#textmodal"><textarea id="txtarea'+number+'" type="email" class="validate materialize-textarea"></textarea><label id="txtareadefaultlabel'+number+'" for="txtarea'+number+'">Default text area label</label></li>');
     });
 /* #endregion */
 /* #region  checkbox - radio */
     $('#chkstyle1').on('click', function () {
-        number = $('.previewform li').length + 1
+        number = $('.previewform').children('li').length + 1
         $('.previewform').append('<li id="ip'+number+'" class="chkrdocurrent modal-trigger" href="#chkrdomodal"><label><input name="group1" id="chk'+number+'" type="checkbox" disabled /><span>Checkbox style 1</span></label></li>');
     });
     $('#chkstyle2').on('click', function () {
-        number = $('.previewform li').length + 1
+        number = $('.previewform').children('li').length + 1
         $('.previewform').append('<li id="ip'+number+'" class="chkrdocurrent modal-trigger" href="#chkrdomodal"><label><input name="group1" class="filled-in" id="chk'+number+'" type="checkbox" disabled /><span>Checkbox style 2</span></label></li>');
     });
     $('#rdostyle1').on('click', function () {
-        number = $('.previewform li').length + 1
+        number = $('.previewform').children('li').length + 1
         $('.previewform').append('<li id="ip'+number+'" class="chkrdocurrent modal-trigger" href="#chkrdomodal"><label><input name="group1" id="rdo'+number+'" type="radio" disabled /><span>Radio style 1</span></label></li>');
     });
     $('#rdostyle2').on('click', function () {
-        number = $('.previewform li').length + 1
+        number = $('.previewform').children('li').length + 1
         $('.previewform').append('<li id="ip'+number+'" class="chkrdocurrent modal-trigger" href="#chkrdomodal"><label><input name="group1" class="with-gap" id="rdo'+number+'" type="radio" disabled /><span>Radio style 2</span></label></li>');
     });
  /* #endregion */
+/* #region  select */
     $('#slct').on('click', function () {
         //alert('test')
-        number = $('.previewform li').length + 1
-        $('.previewform').append('<li class="input-field"><select ><option value="" disabled selected>Choose your option</option><option value="1">Option 1</option><option value="2">Option 2</option><option value="3">Option 3</option></select><label>Select label</label></li>').ready(function () {
+        number = $('.previewform').children('li').length + 1
+        $('.previewform').append('<li id="ip'+number+'" class="selectcurent input-field "><select><option value="" disabled selected>Choose your option</option><option value="1">Option 1</option><option value="2">Option 2</option><option value="3">Option 3</option></select><label>Select label</label></li>').ready(function () {
             $('select').formSelect();
             $('.select-dropdown').css('cursor', 'pointer')
-
         });
     });
+/* #endregion */
 });
