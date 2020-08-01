@@ -294,11 +294,23 @@ $('#titlemodalupdate').on('click', function () {
 /* #endregion */
 
 /* #region  select modal */
-    $('.previewform').on('click','.chkrdocurrent', function () {
+    $('.previewform').on('click','.selectcurent', function () {
         currentid = '#'
+        labeltextchild = '#'
         currentid += $(this).attr('id');
-        val = $(this).children("label").children("span").text()
-        chkstatus = $(this).children("label").children("input").prop('checked')
+        labeltextchild += $(this).children("label").attr('id')
+        console.log(currentid,labeltextchild)
+        console.log($(labeltextchild).text());
+    });
+    $('#number_inline').on('keyup change', function () {
+        var number = $(this).val();
+        var container = $('#optioncontent')[0]
+        while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+        for (i=0;i<number;i++){
+                $(container).append('<div class="input-field"><input id="op'+(i+1)+'" type="text" class="validate"><label for="op'+(i+1)+'">Option '+(i+1)+'</label></div><br>');
+            }
     });
 /* #endregion */
 
@@ -338,7 +350,7 @@ $('#titlemodalupdate').on('click', function () {
     $('#slct').on('click', function () {
         //alert('test')
         number = $('.previewform').children('li').length + 1
-        $('.previewform').append('<li id="ip'+number+'" class="selectcurent input-field "><select><option value="" disabled selected>Choose your option</option><option value="1">Option 1</option><option value="2">Option 2</option><option value="3">Option 3</option></select><label>Select label</label></li>').ready(function () {
+        $('.previewform').append('<li id="ip'+number+'" class="selectcurent input-field modal-trigger" href="#slcmodal"><select><option value="" disabled selected>Choose your option</option><option value="1">Option 1</option><option value="2">Option 2</option><option value="3">Option 3</option></select><label id="slct'+number+'">Select label</label></li>').ready(function () {
             $('select').formSelect();
             $('.select-dropdown').css('cursor', 'pointer')
         });
