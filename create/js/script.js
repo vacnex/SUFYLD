@@ -1,7 +1,7 @@
 $(document).ready(function(){
 /* #region  Init */
     var titleheader,number,defaultlabeloptions,currentlabel,type
-    var oplist = [];
+    const oplist = [];
     var currentid = '#'
     var iptextchild = '#'
     var labeltextchild = '#'
@@ -40,13 +40,15 @@ $(document).ready(function(){
         $('#submitlabelmodal').val($('#btnconfig').text());
         $('#chkrdolabelmodal').val(val);
         $("#chkdefault").prop( "checked", chkstatus );
-        $('#number_inline').val(oplist.length);
-        for (i=0;i<oplist.length;i++){
-            $('#optioncontent').append('<div class="input-field"><input id="op'+(i+1)+'" type="text" class="validate"></div><br>');
-            $('#op'+(i+1)).val(oplist[i]);
-        }
         $('#slclabel').val(defaultlabeloptions);
         $('#slclabelmodal').val(currentlabel);
+        $('#number_inline').val(oplist.length);
+        $('#optioncontent').empty();
+        for (var i=0;i<$('#number_inline').val();i++){
+            $('#optioncontent').append('<div class="input-field"><input id="op'+(i+1)+'" type="text" class="validate"></div>');
+            $('#op'+(i+1)).val(oplist[i]);
+        }
+        
     }});
     $('.select-dropdown').css('cursor', 'pointer')
     $('#slct>div>div').addClass('slctitem');
@@ -311,6 +313,7 @@ $('#titlemodalupdate').on('click', function () {
         labeltextchild += $(this).children("label").attr('id')
         linum = $(currentid).children('div').children('ul').children('li').length
         currentlabel = $(currentid).children('label').text()
+        oplist.length = 0
         $(currentid).children('div').children('ul').children('li').each(function (index, element) {
             if ($( this ).prop('class').startsWith('disabled')) {
                 defaultlabeloptions = $( this ).text()
@@ -321,23 +324,34 @@ $('#titlemodalupdate').on('click', function () {
         });
     });
     $('#number_inline').on('keyup change', function () {
-        var number = $(this).val();
-        var container = $('#optioncontent')[0]
-        while (container.hasChildNodes()) {
-                container.removeChild(container.lastChild);
-            }
-        for (i=0;i<number;i++){
-                $(container).append('<div class="input-field"><input id="op'+(i+1)+'" type="text" class="validate"></div><br>');
-                $('#op'+(i+1)).val('Option '+(i+1));
-            }
+        var b = $('#optioncontent div')
+        var v = $('#number_inline').val()
+        if (v>b.length) {
+            $('#optioncontent').append('<div class="input-field"><input id="op'+v+'" type="text" class="validate"></div>');
+            $('#op'+v).val('Option '+v);
+        }else if(v<b.length){
+            $( '#op'+(Number(v) + 1) ).parent().remove()
+        }
     });
     $('#slcmodalupdate').on('click', function () {
-        var slclabelmodal = $('#slclabelmodal').val();
-        var slclabel = $('#slclabel').val();
+        var slclabelmodal = $('#slclabelmodal').val(); //input label
+        var slclabel = $('#slclabel').val(); //choose label
+        var opnumber = $('#number_inline').val()
         $(currentid).children('label').text(slclabelmodal)
         $(currentid).find('input').val(slclabel)
-        $(currentid).find('.disabled').text(slclabel)
+        $(currentid).find('.disabled > span').text(slclabel)
         $(currentid).find('select > option').first().text(slclabel)
+        var newop = []
+        $('#optioncontent input').each(function () {
+            newop.push(this.value);
+        });
+        var currentselect =$(currentid).find('select')[0]
+        $(currentselect).find('option').not(':first').remove();
+        for (let i = 0; i < opnumber; i++) {
+            $(currentselect).append('<option value="'+(i+1)+'">'+newop[i]+'</option>')
+        }
+        $('select').formSelect();
+        $('.select-dropdown').css('cursor', 'pointer')
     });
     $('#slcmodaldelete').on('click', function () {
         $(currentid).remove();
@@ -378,7 +392,6 @@ $('#titlemodalupdate').on('click', function () {
     });
  /* #endregion */
 /* #region  select */
-    $('#optioncontent').empty()
     $('#slct').on('click', function () {
         number = $('.previewform').children('li').length + 1
         $('.previewform').append('<li id="ip'+number+'" class="selectcurent input-field modal-trigger" href="#slcmodal"><select><option value="" disabled selected>Choose your option</option><option value="1">Option 1</option><option value="2">Option 2</option><option value="3">Option 3</option></select><label id="slct'+number+'">Select label</label></li>').ready(function () {
