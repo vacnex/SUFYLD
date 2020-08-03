@@ -323,14 +323,17 @@ $('#titlemodalupdate').on('click', function () {
             }
         });
     });
-    $('#number_inline').on('keyup change', function () {
+    $('#number_inline').on('input', function () {
         var b = $('#optioncontent div')
         var v = $('#number_inline').val()
-        if (v>b.length) {
-            $('#optioncontent').append('<div class="input-field"><input id="op'+v+'" type="text" class="validate"></div>');
-            $('#op'+v).val('Option '+v);
-        }else if(v<b.length){
-            $( '#op'+(Number(v) + 1) ).parent().remove()
+        if (v == '' || v == null ||  v == 0) {
+            $('#optioncontent').empty();
+        }else{
+            $('#optioncontent').empty();
+            for (let i = 0; i < v; i++) {
+                $('#optioncontent').append('<div class="input-field"><input id="op'+(i+1)+'" type="text" class="validate"></div>');
+                $('#op'+(i+1)).val('Option '+(i+1));                  
+            }
         }
     });
     $('#slcmodalupdate').on('click', function () {
